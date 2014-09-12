@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+
+  "name": "Whistler",
+  "description": "Develop a chrome plugin which enables Organization to share information they consume on net among their teams or across Organization,
+  	With integrated voting capability",
+  "version": "1.0",
+
+  "permissions": [
+    "https://secure.flickr.com/"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  }
+}
