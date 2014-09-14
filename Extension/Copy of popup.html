@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+	<title>Whistler</title>
+	<link href="css/main.css" rel="stylesheet">
+	<link href="css/foreground.css" rel="stylesheet">
+	<!--<script data-main="js/main" src="js/require.js"></script>
+	<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="main" src="js/main.js"></script>
+	<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="foreground/application" src="js/application.js"></script> -->
+	<script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+	<script src="js/jquery-ui.min.js" type="text/javascript"></script>
+	<script data-main="js/main" src="js/app.js"></script>
+</head>
+<body>
+	<div class="spinner large absolute-center above-fade-out"></div>
+	<div id="left-base-pane-region" class="main-pane region base">
+		<div class="left-pane full flex-column">
+			<div class="top-bar table">
+				<button id ="createNewWhistle" class="button-icon show show-playlists-area tooltipable">
+					<span class="show-search search-link clickable lowercase" >
+						<img src="images/new_whistle.jpeg" width=18 height=18/>
+					</span>
+				</button>
+				<div class="playlist-title region">
+					<div class="text-tooltipable playlist-title" title="">All Whistles</div>
+				</div>
+				<button class="button-icon show-search tooltipable" data-hasqtip="3" oldtitle="Show search" title="">
+					<i class="fa fa-search"></i>
+				</button>
+			</div>
+			<div class="divider"></div>
+			<div class="content region full flex-column">
+				<div class="active-playlist-area full flex-column">
+					<div class="big-text-wrapper full flex-column">
+						<div class="big-text playlist-empty" style="display:none">
+							<div class="header">
+								Whistles empty !!
+							</div>
+							Would you like to <span class="show-search search-link clickable lowercase">create new whistles</span>?
+						</div>
+						
+						<div class="list">
+							<div class="active-playlist-items droppable-list ui-sortable" style="height: 344px; padding-top: 0px;">
+								<div data-type="playlistItem" class="list-item multi-select-item sliding-view-item playlist-item">
+									<div class="spinner small absolute-center above-fade-out"></div>
+									<img class="item-thumb" src="http://img.youtube.com/vi/j3_CkTWf5HE/default.jpg">
+									<span class="item-title text-tooltipable" data-hasqtip="230" oldtitle=" title="" aria-describedby="qtip-230">Whistle 1</span>
+									<span class="item-details">
+										<span class="item-duration">We will be having all hands meeting today at 5 pm ,please be there.</span>
+										<span class="item-duration">13 Upvote</span>
+										<span class="item-duration">0 Downvote</span>
+									</span>
+									<span class="list-item-buttons region above-fade-out">
+									</span>
+								</div>
+								<div data-type="playlistItem" class="list-item multi-select-item sliding-view-item playlist-item">
+									<div class="spinner small absolute-center above-fade-out"></div>
+									<img class="item-thumb" src="http://img.youtube.com/vi/j3_CkTWf5HE/default.jpg">
+									<span class="item-title text-tooltipable" data-hasqtip="230" oldtitle=" title="" aria-describedby="qtip-230">Whistle 2</span>
+									<span class="item-details">
+										<span class="item-duration">This is an awesome javascript article for learning js object model.</span>
+										<span class="item-duration">13 Upvote</span>
+										<span class="item-duration">0 Downvote</span>
+									</span>
+									<span class="list-item-buttons region above-fade-out">
+									</span>
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="left-covering-pane-region" class="left-pane region covering" style="display:none">
+		<div class="playlists-area fixed-full-overlay">
+		<!-- <div class="playlists-area fixed-full-overlay" style="background: rgba(0, 0, 0, 0.498039);"> -->
+			<div class="panel flex-column" style="transform: translate(250px, 0px);">
+				<div class="header">
+					<button class="slider_header_title">
+						Post New Whistle
+					</button>
+				</div>
+				<div class="divider"></div>
+				<div class="list">
+					<div class="list-header">
+						Content
+					</div>
+					<ul class="playlists ui-sortable">
+						<li data-id="7c86b14f-1d06-436c-8fa1-a38f009e6c86" data-type="playlist" class="list-item playlist new active ui-sortable-handle">
+							<div class="new_whistle_content" contenteditable="true">enter new description</div>
+							<span class="count">0</span>
+						</li>
+					</ul>
+				</div>
+				<div class="context-buttons" style="display: block;">
+					<div class="pull-right">
+						<button class="button-icon button-small add tooltipable" data-hasqtip="25" oldtitle="Create playlist" title="">
+							<i class="fa fa-plus"></i>
+						</button>
+			
+						<button class="button-icon button-small edit tooltipable" data-hasqtip="26" oldtitle="Edit playlist" title="">
+							<i class="fa fa-pencil"></i>
+						</button>
+						
+						<!--title is set in view because icon can be disabled-->
+						<button id="delete-playlist-button" class="button-icon button-small delete tooltipable disabled" data-hasqtip="27" oldtitle="Can't delete last playlist" title="">
+							<i class="fa fa-trash-o"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>				
+	</div>
+	<div id="right-base-pane-region" class="right-pane region base" style="display:none">
+		<div id="right-base-pane" class="right-pane full flex-column">
+			<div class="top-bar" style="display:none">
+				<div class="volume region" >
+					<div class="volume clickable">
+						<button id="mute-button" class="mute button-icon">
+							<i class="fa fa-volume-up"></i>
+						</button>
+						<div class="volume-slider hidden">
+							<div class="progress" style="height: 100%"></div>
+							<input class="volume-range clickable" type="range" value="100">
+						</div>
+					</div>
+				</div>
+				<div class="center-group">
+					<button id="previous-button" class="button-icon">
+						<i class="fa fa-backward fa-lg"></i> 
+					</button>
+					<button id="play-pause-button" class="button-icon">
+						<i class="fa fa-lg fa-play"></i>
+					</button>
+					<button id="next-button" class="button-icon">
+						<i class="fa fa-forward fa-lg"></i>
+					</button>
+				</div>
+				<div class="streamus-menu region">
+					<div id="menu-area">
+						<button class="menu-button button-icon tooltipable">
+							<i class="fa fa-cogs"></i>
+						</button>
+						<ul class="menu">
+							<li class="settings clickable">Settings</li>
+							<li class="keyboard-shortcuts clickable">Keyboard shortcuts</li>
+							<li class="view-in-tab clickable">View in tab</li>
+							<li class="donate clickable">Donate</li>
+							<li class="reload clickable">Reload</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="time-progress region" >
+				<div class="time-progress full">
+					<div class="time-elapsed tooltipable clickable" data-hasqtip="19" oldtitle="Elapsed time" title="">00:00</div>
+					<div class="time-slider">
+						<div class="progress" style="width: 0%;"></div>
+						<input class="time-range clickable" type="range" max="3442">
+					</div>
+					<div class="duration tooltipable" data-hasqtip="20" oldtitle="Total time" title="">57:22</div>
+				</div>
+			</div>
+			<div class="stream region">
+				<div class="stream full flex-column">
+					<div class="big-text-wrapper full flex-column">
+						<div class="big-text stream-empty hidden">
+							<div class="header">Stream empty</div>
+							Why not add a song from a playlist or <span class="show-search search-link clickable lowercase">Search for songs</span>?
+						</div>
+						<div class="list">
+							<div class="stream-items droppable-list ui-sortable" style="height: 290px; padding-top: 0px;">
+								<div data-id="d22fd940-4bda-702d-1133-c89abd2525f3" data-type="streamItem" class="list-item multi-select-item sliding-view-item stream-item ui-sortable-handle">
+									<div class="spinner small absolute-center above-fade-out"></div>
+									<img class="item-thumb" src="http://img.youtube.com/vi/j3_CkTWf5HE/default.jpg">
+									<span class="item-title text-tooltipable" data-hasqtip="5" oldtitle="Best Of Ghulam Ali Songs - Part 1 - Hit Ghazal Collection" title="">
+									   Sample whistle1
+									</span>
+									<span class="item-details">
+										<span class="item-duration">
+										   2 upvote
+										</span>
+									</span>
+									<span class="list-item-buttons region above-fade-out">
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="context-buttons" style="display: block;">
+						<div class="pull-left">
+							<button id="shuffle-button" class="button-icon button-small tooltipable" data-hasqtip="13" oldtitle="Shuffling disabled" title="">
+								<i class="fa fa-random"></i>
+							</button>
+							
+							<button id="repeat-button" class="button-icon button-small tooltipable enabled" data-hasqtip="14" oldtitle="Repeat song" title=""><i class="fa fa-repeat repeat-song"></i></button>
+					
+							<button id="radio-button" class="button-icon button-small tooltipable" data-hasqtip="15" oldtitle="Radio disabled" title="">
+								<i class="icon-signal"></i>
+							</button>
+						</div>
+						<div class="pull-right">
+							<button id="save-stream" class="button-icon button-small save tooltipable" data-hasqtip="16" oldtitle="Save stream" title="">
+								<i class="fa fa-save"></i>
+							</button>
+					
+							<button class="button-icon button-small clear tooltipable" data-hasqtip="17" oldtitle="Clear stream" title="">
+								<i class="fa fa-trash-o"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div id="prompt-region" class="prompt region absolute full above-fade-out"></div>
+	<div id="notification-region" class="notification region absolute full"></div>
+	<div id="context-menu-region" class="context-menu region absolute full"></div> -->
+</body>
+</html>
+

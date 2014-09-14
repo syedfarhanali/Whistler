@@ -1,0 +1,254 @@
+html {
+	font-family: sans-serif;
+}
+body {
+	margin: 0;
+	width: 640px;
+	height: 410px;
+	color:#666666;
+	font-size:13px;
+}
+.main_container{
+	background: none repeat scroll 0 0 #FFFFFF;
+    bottom: 0;
+    position: absolute;
+    top: 0;
+    width: 640px;
+	height: 410px;
+}
+.container{
+   height:415px
+}
+.main_header{
+	 
+}
+.header{
+	height: 45px;
+	line-height:45px
+}
+.new_post{
+	display: table-cell;
+    padding:12px 8px;
+    width: 33px;
+    vertical-align:bottom;
+}
+.header_title{
+	display: table-cell;
+    font-family: Georgia;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: bold;
+    padding: 0 10px;
+    width: 40px;
+}
+.header_filter{
+	width:40px;
+	display:table-cell;
+	padding:0 10px;
+}
+.content_region{
+	width: 640px;
+	height:303px;
+}
+
+.main_content{
+	padding: 10px 10px;	
+}
+.slide_container{
+	background: none repeat scroll 0 0 #FFFFFF;
+	box-shadow:0 0 20px #333333;
+    bottom: 0;
+    left: 255px;
+    position: absolute;
+    top: 0;
+    width:260.156%;
+    display:none;
+}
+.slide_top{
+	padding: 0px 10px;	
+}
+.slide_middle{
+	height:260px;
+	padding: 10px 10px;	
+}
+.slide_bottom{
+	height:95px;
+	padding:6px 8px;
+}
+.divider{
+	background-color: #EBEBEB;
+    height: 1px;
+}
+.list{
+	
+}
+.list_item{
+	border: 5px solid #FFFFFF;
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.1s ease 0s, border-color 0.1s ease 0s;
+    width: 100%;
+    position:relative;
+}
+.list_item:hover{
+	background: none repeat scroll 0 0 #EBEBEB;
+    border-color: #EBEBEB;
+}
+.list_item .item-thumb{
+	height: 30px;
+	left: 0;
+	top: 5px;
+	width: 40px;
+	position:absolute;
+}
+.list_item .item-title{
+	padding-left: 54px;
+    padding-top: 5px;
+    position: absolute;
+}
+.list_item .item-details{
+	margin:1px 50px;
+}
+.list_item.active{
+	background: #f1c40f;
+	border-color: #f1c40f;
+	color:#FFFFFF;
+}
+img.new_post {
+    background: url(../images/master_sprite.png) 13px -79px;
+}
+.slider_close {
+	width: 25px;
+	height: 18px;
+    background: url(../images/master_sprite.png) -315px -9px;
+    margin:15px 341px;
+    position:absolute;
+}
+.slide_close_header{
+	float:right;
+}
+.item-hover-details{
+	margin:8px 550px;
+	width:110px;
+    position: absolute;
+}
+.upvote{
+	background: url(../images/master_sprite.png) 388px -155px;
+	width:15px;
+	height:13px;
+	position:absolute;
+}
+.upvote_count{
+	margin-left:13px;
+}
+.downvote{
+	background: url(../images/master_sprite.png) 367px -156px;
+	width:18px;
+	height:13px;
+	position:absolute;
+}
+.downvote_count{
+	margin-left:20px
+}
+.item_description{
+	height: 15px;
+    margin: 22px 4px;
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width:470px;
+}
+.item_description:hover{
+	height: 15px;
+    margin: 22px 4px;
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 408px;
+}
+.whistle_tag{
+	background: url(../images/master_sprite.png) -9px -59px;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	margin:-1px -3px;
+}
+.whistle_tag_active{
+	background: url(../images/master_sprite_medium_blue.png) -9px -59px;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	margin:-1px -3px;
+}
+.tag_container{
+	width: 45px;
+	display: table-cell;
+	position: absolute;
+	height: 13px;
+	z-index:2;
+}
+.tag_container .tag_name{
+	max-width: 80px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	position: absolute;
+	margin:0px 14px;
+}
+.vertical_divider{
+	border-right: 1px solid #7c7c7c;
+	height: 32px;
+	margin-top: 8px;
+	width: 0;
+	position:absolute;
+}
+.new_whistle{
+	display: table-cell;
+	font-family: serif;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 0 10px;
+	width: 40px;
+	padding: 5px 273px;
+	position:absolute;
+	color:#4ea6ea;
+}
+.custom_tag{
+	height:42px;
+}
+.user_image{
+	background: url(../images/user_blank.gif) 1px -40px;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	margin:2px -7px;
+}
+.user_name{
+	margin-left:55px;
+	font-weight:500;
+}
+.tagging_button{
+	text-decoration: none;
+	color: black;
+	font-size: 12px;
+	padding: 9px 12px 7px;
+	border-radius: 3px;
+	border: 1px solid #E4E4E2;
+}
+.whistle_link textarea{
+	border: 1px solid #7C7C9D;
+    border-radius: 6px 6px 6px 6px;
+    height: 120px;
+    margin: 2px;
+    width: 340px;
+}
+.whistle_comment textarea{
+	border: 1px solid #7C7C9D;
+    border-radius: 6px 6px 6px 6px;
+    height: 120px;
+    margin: 2px;
+    width: 340px;
+}
