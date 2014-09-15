@@ -151,18 +151,37 @@ img.new_post {
 .downvote_count{
 	margin-left:20px
 }
+.favourite{
+	background: url(../images/master_sprite.png) 338px -11px;
+	width: 14px;
+	height: 14px;
+	position:absolute;
+	margin: 23px 524px;
+	display:none;
+}
+.favourite_sel{
+	background: url(../images/master_sprite.png) 362px -11px;
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	margin: 23px 524px;
+	display:none;
+}
+.list_item:hover > .favourite,.list_item:hover > .favourite_sel{
+	display:block;
+}
 .item_description{
-	height: 15px;
-    margin: 22px 4px;
+	height: 25px;
+	margin: 22px 55px;
     overflow: hidden;
     position: absolute;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width:470px;
+    width:500px;
 }
-.item_description:hover{
+.list_item:hover > .item_description{
 	height: 15px;
-    margin: 22px 4px;
+    margin: 22px 55px;
     overflow: hidden;
     position: absolute;
     text-overflow: ellipsis;
@@ -177,7 +196,7 @@ img.new_post {
 	margin:-1px -3px;
 }
 .whistle_tag_active{
-	background: url(../images/master_sprite_medium_blue.png) -9px -59px;
+	background: url(../images/master_sprite_red.png) -9px -59px;
 	width: 15px;
 	height: 15px;
 	position: absolute;
