@@ -19,6 +19,27 @@ body {
 .container{
    height:415px
 }
+.slide_container_left{
+	background: none repeat scroll 0 0 #FFFFFF;
+	box-shadow: 0 0 20px #333333;
+	height: 415px;
+	width: 255px;
+	position: absolute;
+	display:none;
+	bottom: 0;
+	top: 0;
+}
+
+.slide_left_header{
+	margin: 45px 1px;
+}
+.slider_close_left{
+	width: 25px;
+	height: 18px;
+	background: url(../images/master_sprite.png) -315px -9px;
+	margin:-30px 213px;
+}
+
 .main_header{
 	 
 }
@@ -28,9 +49,28 @@ body {
 }
 .new_post{
 	display: table-cell;
-    padding:12px 8px;
-    width: 33px;
-    vertical-align:bottom;
+	padding: 9px 4px;
+	width: 33px;
+	vertical-align: bottom;
+	cursor: pointer;
+	margin: 1px 283px;
+	position: absolute;
+	float: right;
+}
+
+.fav_whistle_selector{
+	display: table-cell;
+	padding: 0px 19px;
+	width: 33px;
+	vertical-align: bottom;
+	cursor: pointer;
+}
+.fav_whistle_selector img{
+	background: url(../images/master_sprite_blue.png) 370px -3px;
+	margin: -8px -3px;
+	border: none;
+	width: 30px;
+	height: 30px;
 }
 .header_title{
 	display: table-cell;
@@ -116,18 +156,19 @@ body {
 	color:#FFFFFF;
 }
 img.new_post {
-    background: url(../images/master_sprite.png) 13px -79px;
+    background: url(../images/master_sprite_blue.png) 13px -79px;
 }
 .slider_close {
 	width: 25px;
 	height: 18px;
     background: url(../images/master_sprite.png) -315px -9px;
-    margin:15px 341px;
+    margin:14px 319px;
     position:absolute;
 }
 .slide_close_header{
 	float:right;
 }
+
 .item-hover-details{
 	margin:8px 550px;
 	width:110px;
@@ -170,7 +211,7 @@ img.new_post {
 .list_item:hover > .favourite,.list_item:hover > .favourite_sel{
 	display:block;
 }
-.item_description{
+.list_item .item_description{
 	height: 25px;
 	margin: 22px 55px;
     overflow: hidden;
@@ -233,7 +274,7 @@ img.new_post {
 	width: 40px;
 	padding: 5px 273px;
 	position:absolute;
-	color:#4ea6ea;
+	color:#0084b4;
 }
 .custom_tag{
 	height:42px;
@@ -260,14 +301,134 @@ img.new_post {
 .whistle_link textarea{
 	border: 1px solid #7C7C9D;
     border-radius: 6px 6px 6px 6px;
-    height: 120px;
+    height: 169px;
     margin: 2px;
     width: 340px;
 }
-.whistle_comment textarea{
+.new_whistle_comment textarea{
 	border: 1px solid #7C7C9D;
     border-radius: 6px 6px 6px 6px;
-    height: 120px;
+    height: 64px;
     margin: 2px;
     width: 340px;
 }
+.preview_container{
+	position: absolute;
+	width: 300px;
+	margin:-160px 7px;
+	
+}
+.preview_main{
+	border: 1px solid black;
+	padding: 5px 9px;
+}
+.preview_title,.item-title{
+	font-weight:bold;
+}
+.preview_url{
+	font-style: italic;
+}
+.preview_description{
+	font-weight:100;
+}
+
+.conversation_list_item{
+	border: 5px solid #FFFFFF;
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.1s ease 0s, border-color 0.1s ease 0s;
+    width: 96%;
+    position:relative;
+}
+.conversation_list_item:hover{
+	background: none repeat scroll 0 0 #EBEBEB;
+    border-color: #EBEBEB;
+}
+.conversation_list_item .item-thumb{
+	height: 30px;
+	left: 0;
+	top: 5px;
+	width: 30px;
+	position:absolute;
+}
+.conversation_list_item .item-title{
+	padding-left: 54px;
+    padding-top: 5px;
+    position: absolute;
+}
+.conversation_list_item .item-details{
+	margin:1px 50px;
+}
+.conversation_list_item.active{
+	background: #f1c40f;
+	border-color: #f1c40f;
+	color:#FFFFFF;
+}
+.conversation_list_item .item_description{
+	height: 39px;
+	margin: 18px 55px;
+	overflow: hidden;
+	position: absolute;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 186px;
+}
+.preview_container_detail{
+	position: absolute;
+	width: 300px;
+	margin: 0 11px;
+}
+.preview_main_details .preview_title{
+	font-size:14px;
+}
+.preview_main_details .preview_description{
+	margin-top:10px;
+}
+.comment_list{
+	margin:142px -2px;
+}
+.comment_item{
+	margin: 10px 18px;
+	padding: 25px 16px;
+}
+.comment_image{
+	width: 30px;
+	position: absolute;
+	padding: 10px;
+	margin: -9px -21px;
+}
+.comment_text{
+	position: absolute;
+	margin: 0px 37px;
+}
+
+.slide_container .upvote{
+	margin:-24px 188px;
+}
+.slide_container .upvote_count{
+	position:absolute;
+	margin:-38px 202px
+}
+.slide_container .downvote{
+	margin:-23px 230px;
+}
+.slide_container .downvote_count{
+	position:absolute;
+	margin:-40px 248px;
+}
+
+.slide_container .fav{
+	margin:-24px 188px;
+}
+
+.slide_container .fav_count{
+	margin:-24px 188px;
+}
+.whistle_comment{
+	margin: 78px 15px;
+	height: 53px;
+	width: 296px;
+	position: absolute;
+}
+
