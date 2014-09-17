@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd		
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/util 
+		http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<bean id="queries" class="com.talentica.whistler.bo.QueryBoImpl">
+		<property name="map">
+			<map>
+			<entry key="COMMUNITY_USERS">
+					<value>
+						Select 
+						usr_user.id,
+						usr_user.username, 
+						usr_user.first_name,
+						usr_user.last_name,
+						usr_user.program,
+						usr_user.status,
+						usr_user.last_login
+						FROM
+						usr_user LEFT OUTER JOIN com_member ON (usr_user.id = com_member.user_id)
+						   LEFT OUTER JOIN com_community_members ON (com_member.id = com_community_members.community_member_id)
+						WHERE 
+							(
+							com_community_members.community_id = ?
+							OR
+							com_community_members.community_id IN 
+								  (SELECT sub_community_id FROM com_community_subcommunity WHERE community_id = ?)
+							)
+						  	AND usr_user.status != 0
+						ORDER BY usr_user.created ASC;
+					</value>
+				</entry>
+				
+			</map>
+		</property>
+	</bean>
+</beans>
