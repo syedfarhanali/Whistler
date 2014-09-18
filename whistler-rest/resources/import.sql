@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(255) DEFAULT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE `user_group_join` (
   `group_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS group;
+DROP TABLE IF EXISTS `group`;
 CREATE TABLE `group` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` int(11) DEFAULT NULL,

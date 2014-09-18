@@ -1,4 +1,72 @@
 var data = {};
+var fetcher= {};
+var poster= {};
+var api = {};
+
+api.rootUrl="http://localhost:8080/whistler/";
+
+fetcher.getHomePageWhistles=function getHomePageWhistles(){
+	$.ajax({
+		url :api.rootUrl + 'whistles/home/userId/page',
+		contentType : "application/json; charset=utf-8",
+		async:true,
+		dataType : "json",
+		success : function(userRoleDTO) {}
+	});	
+}
+
+fetcher.getWhistleDetails=function getWhistleDetails(){
+	$.ajax({
+		url :api.rootUrl + 'whistle/detail/whistleId',
+		contentType : "application/json; charset=utf-8",
+		async:true,
+		dataType : "json",
+		success : function(userRoleDTO) {}
+	});	
+}
+
+fetcher.getFavouriteWhistles=function getFavouriteWhistles(){
+	$.ajax({
+		url :api.rootUrl + 'whistles/favourite/userId/page',
+		contentType : "application/json; charset=utf-8",
+		async:true,
+		dataType : "json",
+		success : function(userRoleDTO) {}
+	});	
+}
+
+fetcher.getTopVotedWhistles=function getTopVotedWhistles(){
+	$.ajax({
+		url :api.rootUrl + 'whistles/topVoted/userId/page',
+		contentType : "application/json; charset=utf-8",
+		async:true,
+		dataType : "json",
+		success : function(userRoleDTO) {}
+	});	
+}
+
+poster.saveWhistle=function saveWhistle(whistle){
+	$.ajax({
+		url :api.rootUrl + 'whistle/save',
+		contentType : "application/json; charset=utf-8",
+		async:true,
+		dataType : "json",
+		success : function(userRoleDTO) {}
+	});	
+}
+
+poster.saveEvent=function saveEvent(event){
+	$.ajax({
+		url :api.rootUrl + 'event/save',
+		contentType : "application/json; charset=utf-8",
+		async:true,
+		dataType : "json",
+		success : function(userRoleDTO) {}
+	});	
+}
+
+
+
 $(document).ready(function(){
 	var whistles = new Array();
 	var whistle1= {
