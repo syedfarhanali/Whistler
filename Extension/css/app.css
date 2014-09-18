@@ -3,27 +3,28 @@ html {
 }
 body {
 	margin: 0;
-	width: 640px;
-	height: 410px;
-	color:#666666;
-	font-size:13px;
+	width: 800px;
+	height: 511px;
+	color: #666666;
+	font-size: 13px;
 }
 .main_container{
 	background: none repeat scroll 0 0 #FFFFFF;
-    bottom: 0;
-    position: absolute;
-    top: 0;
-    width: 640px;
+	bottom: 0;
+	position: absolute;
+	top: 0;
+	width: 96%;
 	height: 410px;
+	padding: 1%;
 }
 .container{
-   height:415px
+   height:100%;
 }
 .slide_container_left{
 	background: none repeat scroll 0 0 #FFFFFF;
 	box-shadow: 0 0 20px #333333;
-	height: 415px;
-	width: 255px;
+	height: 100%;
+	width: 32%;
 	position: absolute;
 	display:none;
 	bottom: 0;
@@ -31,20 +32,21 @@ body {
 }
 
 .slide_left_header{
-	margin: 45px 1px;
+	width: 100%;
+	height: 11.5%;
 }
 .slider_close_left{
 	width: 25px;
 	height: 18px;
 	background: url(../images/master_sprite.png) -315px -9px;
-	margin:-30px 213px;
+	margin:23px 209px;
 }
 
 .main_header{
 	 
 }
 .header{
-	height: 45px;
+	height:10%;
 	line-height:45px
 }
 .new_post{
@@ -53,7 +55,7 @@ body {
 	width: 33px;
 	vertical-align: bottom;
 	cursor: pointer;
-	margin: 1px 283px;
+	margin: 0% 86%;
 	position: absolute;
 	float: right;
 }
@@ -87,8 +89,8 @@ body {
 	padding:0 10px;
 }
 .content_region{
-	width: 640px;
-	height:303px;
+	width: 100%;
+	height:75%;
 }
 
 .main_content{
@@ -101,15 +103,17 @@ body {
     left: 255px;
     position: absolute;
     top: 0;
-    width:260.156%;
+    width:68%;
     display:none;
 }
 .slide_top{
 	padding: 0px 10px;	
+	width:100%
 }
 .slide_middle{
-	height:260px;
-	padding: 10px 10px;	
+	height: 90.5%;
+	padding: 10px 10px;
+	width: 100%;
 }
 .slide_bottom{
 	height:95px;
@@ -120,16 +124,17 @@ body {
     height: 1px;
 }
 .list{
-	
+	widt:95%;
 }
 .list_item{
 	border: 5px solid #FFFFFF;
-    height: 40px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: background-color 0.1s ease 0s, border-color 0.1s ease 0s;
-    width: 100%;
-    position:relative;
+	height: 40px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	transition: background-color 0.1s ease 0s, border-color 0.1s ease 0s;
+	width:96%;
+	position: relative;
+	padding: 1%;
 }
 .list_item:hover{
 	background: none repeat scroll 0 0 #EBEBEB;
@@ -162,7 +167,7 @@ img.new_post {
 	width: 25px;
 	height: 18px;
     background: url(../images/master_sprite.png) -315px -9px;
-    margin:14px 319px;
+    margin:3% 90%;
     position:absolute;
 }
 .slide_close_header{
@@ -170,7 +175,7 @@ img.new_post {
 }
 
 .item-hover-details{
-	margin:8px 550px;
+	margin:0% 88%;
 	width:110px;
     position: absolute;
 }
@@ -197,7 +202,7 @@ img.new_post {
 	width: 14px;
 	height: 14px;
 	position:absolute;
-	margin: 23px 524px;
+	margin:2% 83%;
 	display:none;
 }
 .favourite_sel{
@@ -218,7 +223,7 @@ img.new_post {
     position: absolute;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width:500px;
+    width:75%;
 }
 .list_item:hover > .item_description{
 	height: 15px;
@@ -227,7 +232,7 @@ img.new_post {
     position: absolute;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 408px;
+    width:70%;
 }
 .whistle_tag{
 	background: url(../images/master_sprite.png) -9px -59px;
@@ -272,9 +277,9 @@ img.new_post {
 	font-weight: bold;
 	padding: 0 10px;
 	width: 40px;
-	padding: 5px 273px;
-	position:absolute;
-	color:#0084b4;
+	margin:1% 70%;
+	position: absolute;
+	color: #0084b4;
 }
 .custom_tag{
 	height:42px;
@@ -284,10 +289,10 @@ img.new_post {
 	width: 40px;
 	height: 40px;
 	position: absolute;
-	margin:2px -7px;
+	margin:1% 2%;
 }
 .user_name{
-	margin-left:55px;
+	margin:0% 13%;
 	font-weight:500;
 }
 .tagging_button{
@@ -298,38 +303,73 @@ img.new_post {
 	border-radius: 3px;
 	border: 1px solid #E4E4E2;
 }
+.whistle_link{
+	width:96%;
+	height:80%;
+}
 .whistle_link textarea{
 	border: 1px solid #7C7C9D;
-    border-radius: 6px 6px 6px 6px;
-    height: 169px;
-    margin: 2px;
-    width: 340px;
+	border-radius: 6px 6px 6px 6px;
+	height: 94%;
+	margin: 2px;
+	width: 93%;
+	padding:9px 15px;
 }
 .new_whistle_comment textarea{
-	border: 1px solid #7C7C9D;
-    border-radius: 6px 6px 6px 6px;
-    height: 64px;
-    margin: 2px;
-    width: 340px;
+	display: table-cell;
+	font-family: serif;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 0 10px;
+	width: 91%;
+	margin:3.5% .5%;
+	position: absolute;
+	border-radius:6px;
 }
 .preview_container{
 	position: absolute;
-	width: 300px;
-	margin:-160px 7px;
-	
+	width: 89%;
+	height: 41%;
+	margin: -235px 18px;
+	border: 1px solid #EAEAEA;
+	border-radius: 6px;
+	display:none;
 }
 .preview_main{
-	border: 1px solid black;
-	padding: 5px 9px;
+	padding:15px 14px;
+	height:88%;
 }
-.preview_title,.item-title{
+.preview_close{
+	background: url(../images/master_sprite.png) -315px -9px;
+	margin: -11px 444px;
+	height: 25px;
+	width: 25px;
+}
+.preview_image{
+	
+}
+.preview_image img{
+	width: 50px;
+	height: 50px;
+	display: table-cell;
+}
+.preview_title{
+	font-weight: bold;
+	padding: -10px 31px;
+}
+.item-title{
 	font-weight:bold;
+	margin-bottom:10px;
+	display: table-cell;
+	padding: 2px 14px;
 }
 .preview_url{
 	font-style: italic;
+	margin-top:10px;
 }
 .preview_description{
 	font-weight:100;
+	margin-top:10px;
 }
 
 .conversation_list_item{
@@ -376,7 +416,7 @@ img.new_post {
 }
 .preview_container_detail{
 	position: absolute;
-	width: 300px;
+	width:92%;
 	margin: 0 11px;
 }
 .preview_main_details .preview_title{
@@ -386,7 +426,8 @@ img.new_post {
 	margin-top:10px;
 }
 .comment_list{
-	margin:142px -2px;
+	margin: 144px 1px;
+	width: 92%;
 }
 .comment_item{
 	margin: 10px 18px;
@@ -404,18 +445,18 @@ img.new_post {
 }
 
 .slide_container .upvote{
-	margin:-24px 188px;
+	margin:-5% 38%;
 }
 .slide_container .upvote_count{
 	position:absolute;
-	margin:-38px 202px
+	margin:-8% 41%;
 }
 .slide_container .downvote{
-	margin:-23px 230px;
+	margin:-5% 48%;
 }
 .slide_container .downvote_count{
 	position:absolute;
-	margin:-40px 248px;
+	margin:-8% 52%;
 }
 
 .slide_container .fav{
@@ -428,7 +469,11 @@ img.new_post {
 .whistle_comment{
 	margin: 78px 15px;
 	height: 53px;
-	width: 296px;
+	width:92%;
 	position: absolute;
 }
-
+.slide_user_detail{
+	position:absolute;
+	width:100%;
+	height:10%;
+}

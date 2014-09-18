@@ -5,7 +5,7 @@ $(document).ready(function(){
 			id:1,
 			title:'title1',
 			image:'images/whistle-orange-logo.jpg',
-			description:'We will be having all hands meeting today at 5 pm ,please be there.',
+			description:'We will be having all hands meeting today at 5 pm ,please be there.We will be having all hands meeting today at 5 pm ,please be there.',
 			upvote:12,
 			downvote:1};
 	

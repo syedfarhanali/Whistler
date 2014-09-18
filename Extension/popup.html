@@ -9,11 +9,11 @@
 	<link href="css/foreground.css" rel="stylesheet">
 	<script data-main="js/main" src="js/require.js"></script>
 	<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="main" src="js/main.js"></script>
-	<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="foreground/application" src="js/application.js"></script> 
-	<script src="js/jquery.urlive.min.js" type="text/javascript"></script>-->
+	<script type="text/javascript" charset="utf-8" async="" data-requireco--> 
 	<script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
 	<script src="js/jquery-ui.min.js" type="text/javascript"></script>
 	<script src="js/jquery.liveurl.js" type="text/javascript"></script>
+	<script src="js/jquery.urlive.min.js" type="text/javascript"></script>
 	<script src="js/data.js" type="text/javascript"></script>
 	<script src="js/Jquery.Tmpl.js" type="text/javascript"></script>
 	<script src="js/app.js" type="text/javascript"></script>
@@ -62,17 +62,19 @@
 
 <script id="newWhistleTemplate" type="text/x-jQuery-tmpl">
 <div id="slide_top" class="slide_top header">
-<div style="position:absolute" >
-	<div class="user_image"></div>
-	<div class="user_name">Syed Farhan Ali</div>
-</div>
+	<div class="slide_user_detail">
+		<div class="user_image"></div>
+		<div class="user_name">Syed Farhan Ali</div>
+	</div>
 <div class="slide_close_header slider_close" id="close_slider"></div>
 </div>
 <div class="divider"></div>
 <div class="content_region">
 <div id="slide_middle" class="slide_middle">
 	<div class="whistle_link"><textarea id="linkUrl">add</textarea></div>
-	<div id="linkPreview" class="preview_container">loading...</div>
+	<div id="linkPreview" class="preview_container">
+		 <span class="loading">Loading...</span>
+	</div>
 	<div class="new_whistle_comment"><textarea></textarea></div>
 	
 </div>
@@ -84,11 +86,11 @@
 		<span class="tag_name">#All</span>
 		<span name="tag_image" class="whistle_tag"></span>
 	</div>
-	<div class="tag_container tagging_button" style="margin-left:75px">
+	<div class="tag_container tagging_button" style="margin-left:100px">
 		<span class="tag_name">#Team</span>
 		<span name="tag_image" class="whistle_tag"></span>
 	</div>
-	<div class="tag_container tagging_button" style="margin-left:150px">
+	<div class="tag_container tagging_button" style="margin-left:200px">
 		<span class="tag_name">#Me</span>
 		<span name="tag_image" class="whistle_tag"></span>
 	</div>
@@ -179,10 +181,20 @@
 {{/each}}
 </script>			
 <script id="previewTemplate" type="text/x-jQuery-tmpl">
-   <div class="preview_main">
-	<div class="preview_title">${preview.title}</div>
-	<div class="preview_description">${preview.description}</div>
-	<div class="preview_url">${preview.url}</div>
+	<div class="preview_main">
+		<div class="preview_close" id="preview_close"></div>
+		<div class="preview_image">	
+			{{if preview.image}}
+				<img src="${preview.image}">
+			{{else preview.images && preview.images.length>0}}
+				<img src="${preview.image[0]}">
+			{{/if}}
+		</div>
+		<div>
+			<div class="preview_title">${preview.title}</div>
+			<div class="preview_description">${preview.description}</div>
+			<div class="preview_url">${preview.url}</div>
+		</div>
    </div>
 </script>
 

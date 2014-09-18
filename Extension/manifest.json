@@ -16,6 +16,6 @@
     "default_popup": "popup.html"
   },
   
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self' 'unsafe-eval';"  
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://query.yahooapis.com/; object-src 'self' 'unsafe-eval';"  
   
 }

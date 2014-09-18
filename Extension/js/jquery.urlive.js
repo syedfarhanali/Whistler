@@ -32,14 +32,12 @@
 	
 	xajax = (function(ajax){		
 		var exRegex = RegExp(location.protocol + '//' + location.hostname),
-			yql_base_uri = 'https'+(/^https/.test(location.protocol)?'s':'') + 
+			yql_base_uri = 'http'+(/^https/.test(location.protocol)?'s':'') + 
 			               '://query.yahooapis.com/v1/public/yql?callback=?',
 			yql_query = 'select * from html where url="{URL}" and xpath="*" and compat="html5"';
 		
-		
-		
 		return function(o) {		
-			var url = o.url;
+			var url = o.url;		
 			if (/get/i.test(o.type) && !/json/i.test(o.dataType) && !exRegex.test(url) && /:\/\//.test(url)){			
 				o.url = yql_base_uri;
 				o.dataType = 'json';			

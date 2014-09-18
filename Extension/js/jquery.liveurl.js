@@ -193,6 +193,7 @@
                 
                 core.ajaxSuccess = function(data, url)
                 {
+                	console.log(data);
                     // URL already loaded, or preview is already shown.
                     if (core.isDuplicate(url, core.already) || core.preview) {
                         core.removeLoader();
@@ -292,6 +293,8 @@
                         title       : preview.title,
                         description : preview.description,
                         url         : preview.url,
+                        image:preview.image,
+                        images:preview.images,
                         video       : (typeof preview.video != not && preview.video.length > 0) ? {} : null
                     };
                     
@@ -451,7 +454,6 @@
             xdr.send();
          
         } else {
-
             $.ajax({
                 crossDomain : true,
                 cache    : false,

@@ -15,15 +15,51 @@ $(document).ready(function(){
 	}
 	
 	function bindNewPostEvent(){
-		$('#linkUrl').liveUrl({
+		/*$('#linkUrl').liveUrl({
 			  success : function(data) 
-			  {  
-			    var preview =data.video+'<br/>'+data.title+'<br/>'+data.description;
-			    $("#linkPreview").empty();
-			    $.tmpl($("#previewTemplate"),{'preview':data}).appendTo($("#linkPreview"));
-			    console.log("done");
+			  {
+				console.log(data)
+				
+				var el=$("#linkPreview");
+				el.empty();
+				$.tmpl($("#previewTemplate"),{'preview':data}).appendTo(el);
+				$(".preview_container").show();
+				$("#preview_close").unbind('click').click(function(){
+					el.empty();
+					 $(".preview_container").hide();
+				})
 			  }
-		});
+		});*/
+		
+		$('#linkUrl').on('input propertychange', function () {
+			var el=$("#linkPreview");
+			 $('#linkUrl').urlive({
+				callbacks: {
+					onStart: function () {
+						console.log("start");
+						$('.loading').show();
+						$('.urlive-container').urlive('remove');
+					},
+					onSuccess: function (data) {
+						console.log(data);
+						
+						el.empty();
+						$.tmpl($("#previewTemplate"),{'preview':data}).appendTo(el);
+						$(".preview_container").show();
+						$("#preview_close").unbind('click').click(function(){
+							el.empty();
+							 $(".preview_container").hide();
+						})
+						$('.loading').hide();
+						$('.urlive-container').urlive('remove');
+					},
+					noData: function () {
+						console.log("nodata");
+						$('.loading').hide();
+					}
+				}
+			})
+		})	
 	}
 	
 	
@@ -47,8 +83,8 @@ $(document).ready(function(){
 		}
 			
 		chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
-		    var curUrl = tabs[0].url;
-		    $(".whistle_link").children('textarea').html(curUrl);
+			var curUrl = tabs[0].url;
+			$(".whistle_link").children('textarea').html(curUrl);
 		});
 		
 		bindNewPostEvent();
