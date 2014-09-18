@@ -5,63 +5,93 @@ var api = {};
 
 api.rootUrl="http://localhost:8080/whistler/";
 
-fetcher.getHomePageWhistles=function getHomePageWhistles(){
+fetcher.getHomePageWhistles=function getHomePageWhistles(userId,page){
+	var returnData;
 	$.ajax({
-		url :api.rootUrl + 'whistles/home/userId/page',
+		url :api.rootUrl + 'whistles/home/'+userId+'/'+page,
 		contentType : "application/json; charset=utf-8",
 		async:true,
+		type:"GET",
 		dataType : "json",
-		success : function(userRoleDTO) {}
+		success : function(whistles) {
+			returnData=whistles;
+			return returnData;
+		}
 	});	
 }
 
 fetcher.getWhistleDetails=function getWhistleDetails(){
+	var returnData;
 	$.ajax({
 		url :api.rootUrl + 'whistle/detail/whistleId',
 		contentType : "application/json; charset=utf-8",
-		async:true,
+		async:false,
+		type:"GET",
 		dataType : "json",
-		success : function(userRoleDTO) {}
+		success : function(details) {
+			returnData=details;
+			return returnData;
+		}
 	});	
 }
 
 fetcher.getFavouriteWhistles=function getFavouriteWhistles(){
+	var returnData;
 	$.ajax({
 		url :api.rootUrl + 'whistles/favourite/userId/page',
 		contentType : "application/json; charset=utf-8",
 		async:true,
+		type:"GET",
 		dataType : "json",
-		success : function(userRoleDTO) {}
+		success : function(whistles) {
+			returnData=whistles;
+			return returnData;
+		}
 	});	
 }
 
 fetcher.getTopVotedWhistles=function getTopVotedWhistles(){
+	var returnData;
 	$.ajax({
 		url :api.rootUrl + 'whistles/topVoted/userId/page',
 		contentType : "application/json; charset=utf-8",
 		async:true,
+		type:"GET",
 		dataType : "json",
-		success : function(userRoleDTO) {}
+		success : function(whistles) {
+			returnData=whistles;
+			return returnData;
+		}
 	});	
 }
 
 poster.saveWhistle=function saveWhistle(whistle){
+	var returnData;
 	$.ajax({
 		url :api.rootUrl + 'whistle/save',
 		contentType : "application/json; charset=utf-8",
 		async:true,
 		dataType : "json",
-		success : function(userRoleDTO) {}
+		type:"POST",
+		success : function(whistle) {
+			returnData=whistle;
+			return returnData;
+		}
 	});	
 }
 
 poster.saveEvent=function saveEvent(event){
+	var returnData;
 	$.ajax({
 		url :api.rootUrl + 'event/save',
 		contentType : "application/json; charset=utf-8",
 		async:true,
 		dataType : "json",
-		success : function(userRoleDTO) {}
+		type:"POST",
+		success : function(event){
+			returnData=event;
+			return returnData;
+		}
 	});	
 }
 
