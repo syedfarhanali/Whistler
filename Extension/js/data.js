@@ -2,7 +2,7 @@ var data = {};
 var fetcher= {};
 var poster= {};
 var api = {};
-
+var isChrome = window.chrome;
 api.rootUrl="http://localhost:8080/whistler/";
 
 fetcher.getHomePageWhistles=function getHomePageWhistles(userId,page){
@@ -60,6 +60,21 @@ fetcher.getTopVotedWhistles=function getTopVotedWhistles(){
 		dataType : "json",
 		success : function(whistles) {
 			returnData=whistles;
+			return returnData;
+		}
+	});	
+}
+
+fetcher.getAllUserHandles=function getTopVotedWhistles(){
+	var returnData;
+	$.ajax({
+		url :api.rootUrl + 'user/handles/all',
+		contentType : "application/json; charset=utf-8",
+		async:true,
+		type:"GET",
+		dataType : "json",
+		success : function(userhandles) {
+			returnData=userhandles;
 			return returnData;
 		}
 	});	
@@ -142,7 +157,15 @@ $(document).ready(function(){
 	user.id=1,
 	user.firstName="Farhan Ali";
 	user.lastName="Syed"
+		
+		
+	var availableTags = [
+	                     "Gurpreet",
+	                     "Farhan",
+	                     "Suyash",
+	                   ];	
 	
+	data.tags=availableTags;
 	data.user=user;	
 	data.whistles=whistles;
 })
