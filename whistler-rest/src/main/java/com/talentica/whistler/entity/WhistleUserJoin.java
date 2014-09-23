@@ -10,16 +10,14 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter
-public class Group extends BaseEntity{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 3233598293764738351L;
-
+public class WhistleUserJoin {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String name;
+	private int whistleId;
+	
+	private int userId;
+	
 }

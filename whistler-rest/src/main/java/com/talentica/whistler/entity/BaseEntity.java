@@ -12,6 +12,8 @@ import javax.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @MappedSuperclass
 public class BaseEntity implements Serializable{
 	/**
@@ -19,10 +21,12 @@ public class BaseEntity implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@JsonIgnore
 	@Temporal(value = TemporalType.TIMESTAMP)
 	@Getter@Setter
 	protected Date created;
 	
+	@JsonIgnore
 	@Temporal(value = TemporalType.TIMESTAMP)
 	@Getter@Setter
 	protected Date lastModified;

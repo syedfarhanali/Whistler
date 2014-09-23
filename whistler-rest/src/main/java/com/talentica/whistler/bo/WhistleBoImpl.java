@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.talentica.whistler.dao.WhistleDao;
 import com.talentica.whistler.entity.Whistle;
@@ -14,16 +15,26 @@ public class WhistleBoImpl implements WhistleBo{
 	@Autowired
 	private WhistleDao whistleDao;
 	
+	@Override
 	public void save(Whistle whistle){
 		whistleDao.save(whistle);
 	}
 	
+	@Override
 	public Whistle update(Whistle whistle){
 		return whistleDao.update(whistle);
 	}
 	
-	public List<Whistle> findByPage(String username, int page){
-		return whistleDao.findByPage(username, page);
+	@Override
+	@Transactional(readOnly=true)
+	public List<Whistle> findSharedWhistles(Integer userId, Integer page) {
+		return whistleDao.findSharedWhistles(userId, page);
+	}
+
+	@Override
+	@Transactional(readOnly=true)
+	public List<Whistle> findMineWhistles(Integer userId, Integer page) {
+		return whistleDao.findMineWhistles(userId, page);
 	}
 
 }

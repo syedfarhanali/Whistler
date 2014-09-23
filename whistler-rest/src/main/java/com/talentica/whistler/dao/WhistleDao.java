@@ -6,6 +6,7 @@ import com.talentica.whistler.entity.Whistle;
 
 public interface WhistleDao extends BaseDao<Whistle>{
 
-	List<Whistle> findByPage(String username, int page);
-
+	List<Whistle> findSharedWhistles(Integer userId, Integer page);
+	
+	List<Whistle> findMineWhistles(Integer userId, Integer page);
 }

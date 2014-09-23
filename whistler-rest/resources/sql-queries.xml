@@ -18,31 +18,26 @@
 	<bean id="queries" class="com.talentica.whistler.bo.QueryBoImpl">
 		<property name="map">
 			<map>
-			<entry key="COMMUNITY_USERS">
+				<entry key="FIND_SHARED_WHISTLES">
 					<value>
-						Select 
-						usr_user.id,
-						usr_user.username, 
-						usr_user.first_name,
-						usr_user.last_name,
-						usr_user.program,
-						usr_user.status,
-						usr_user.last_login
-						FROM
-						usr_user LEFT OUTER JOIN com_member ON (usr_user.id = com_member.user_id)
-						   LEFT OUTER JOIN com_community_members ON (com_member.id = com_community_members.community_member_id)
-						WHERE 
-							(
-							com_community_members.community_id = ?
-							OR
-							com_community_members.community_id IN 
-								  (SELECT sub_community_id FROM com_community_subcommunity WHERE community_id = ?)
-							)
-						  	AND usr_user.status != 0
-						ORDER BY usr_user.created ASC;
+						select w.* from whistle w
+						join whistle_clan_join wcj ON (w.id=wcj.whistle_id)
+						join user_clan_join ucj ON (wcj.clan_id=ucj.clan_id)
+						where ucj.user_id=:userId
+						order by id desc
+						limit ?, ?
 					</value>
 				</entry>
 				
+				<entry key="FIND_MINE_WHISTLES">
+					<value>
+						select w.* from whistle w
+						join whistle_user_join wuj ON (w.id=wuj.whistle_id)
+						where wuj.user_id=:userId
+						order by id desc
+						limit ?, ?
+					</value>
+				</entry>
 			</map>
 		</property>
 	</bean>

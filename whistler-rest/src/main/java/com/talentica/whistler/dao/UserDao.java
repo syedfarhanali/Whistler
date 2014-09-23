@@ -4,4 +4,6 @@ import com.talentica.whistler.entity.User;
 
 public interface UserDao extends BaseDao<User>{
 
+	User findByUsername(String username);
+
 }

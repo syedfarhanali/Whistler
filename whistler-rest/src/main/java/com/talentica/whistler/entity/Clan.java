@@ -10,23 +10,16 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter
-public class Whistle extends BaseEntity{
+public class Clan extends BaseEntity{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2501303191179634409L;
+	private static final long serialVersionUID = 3233598293764738351L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String title;
-	
-	private String description;
-	
-	private String imageUrl;
-	
-	private String url;
-	
+	private String name;
 }
