@@ -95,6 +95,7 @@ body {
 
 .main_content{
 	padding: 10px 10px;	
+	overflow-y:scroll;
 }
 .slide_container{
 	background: none repeat scroll 0 0 #FFFFFF;
@@ -128,8 +129,6 @@ body {
 }
 .list{
 	width:95%;
-	overflow-y: scroll;
-	max-height: 100%;
 }
 .list_item{
 	border: 5px solid #FFFFFF;
@@ -500,4 +499,8 @@ img.new_post {
 	width: 20px;
 	height: 12px;
 	display:none;
+}
+
+.home_viewmore{
+	margin-left:45%;
 }

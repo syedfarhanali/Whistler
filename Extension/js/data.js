@@ -2,22 +2,34 @@ var data = {};
 var fetcher= {};
 var poster= {};
 var api = {};
+var config = {};
 var isChrome = window.chrome;
-api.rootUrl="http://localhost:8080/whistler/";
+api.rootUrl="http://localhost:8080/";
 
+config.CURRENT_USER_ID=1;
+config.WHISTLE_LIST_SIZE=11;
+
+function processAjaxResponse(response){
+	if(response.status=="SUCCESS"){
+		return response.body;
+	}else{
+		alert(response.message);
+	}
+}
 fetcher.getHomePageWhistles=function getHomePageWhistles(userId,page){
 	var returnData;
 	$.ajax({
-		url :api.rootUrl + 'whistles/home/'+userId+'/'+page,
+		url :api.rootUrl +'whistle/shared/'+userId+'/'+page,
 		contentType : "application/json; charset=utf-8",
-		async:true,
+		async:false,
 		type:"GET",
 		dataType : "json",
 		success : function(whistles) {
-			returnData=whistles;
+			returnData = processAjaxResponse(whistles);
 			return returnData;
 		}
 	});	
+	return returnData;
 }
 
 fetcher.getWhistleDetails=function getWhistleDetails(){

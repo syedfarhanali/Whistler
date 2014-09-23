@@ -30,6 +30,7 @@
 			<div class="list" id="whistleList">
 				
 			</div>
+			<div id="homeViewmore" class="home_viewmore" page="1">View More</div>
 		</div>
 		<div class="divider"></div>
 		<div id="main_footer" id="main_footer">
@@ -142,20 +143,22 @@
 
 <script id="whistleItemTemplate" type="text/x-jQuery-tmpl">
 {{each(i,whistle) whistles}}
-	<div class="list_item" name="whistleDetails" whistle_id="${whistle.id}">
-		<img class="item-thumb" src="${whistle.image}">
-		<span class="item-title">${whistle.title}</span>
-		<span class="item_description">${whistle.description}</span>
-		<span class="favourite"></span>
-		<span class="item-details">
-			<div class="item-hover-details">
-				<span class="upvote"></span>
-				<span class="upvote_count">${whistle.upvote}</span>
-				<span class="downvote"></span>
-				<span class="downvote_count">${whistle.downvote}</span>
-			</div>
-		</span>
-	</div>
+	{{if i<=10}}
+		<div class="list_item" name="whistleDetails" whistle_id="${whistle.id}">
+			<img class="item-thumb" src="${whistle.image}">
+			<span class="item-title">${whistle.title}</span>
+			<span class="item_description">${whistle.description}</span>
+			<span class="favourite"></span>
+			<span class="item-details">
+				<div class="item-hover-details">
+					<span class="upvote"></span>
+					<span class="upvote_count">${whistle.upvote}</span>
+					<span class="downvote"></span>
+					<span class="downvote_count">${whistle.downvote}</span>
+				</div>
+			</span>
+		</div>
+	{{/if}}
 {{/each}}
 </script>	
 <script id="whistleItemSmallTemplate" type="text/x-jQuery-tmpl">
