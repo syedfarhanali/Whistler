@@ -93,14 +93,6 @@ $(document).ready(function(){
 		  });
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
 		$("#createNewWhistle").unbind('click').click(function(){
 			var whistle={};
 			whistle.Url =$("#linkUrl").val();

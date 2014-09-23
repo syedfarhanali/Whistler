@@ -122,6 +122,7 @@ $(document).ready(function(){
 			upvote:12,
 			downvote:1};
 	
+	
 	var comment1 = {
 			text:"Where is the meeting?"
 	};
@@ -139,8 +140,25 @@ $(document).ready(function(){
 	comments.push(comment2);
 	comments.push(comment3);
 	comments.push(comment4);
+	comments.push(comment4);
+	comments.push(comment4);
+	comments.push(comment4);
+	comments.push(comment4);
+	comments.push(comment4);
+	comments.push(comment4);
 	
 	whistle1.comments=comments;
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
 	whistles.push(whistle1);
 	
 	var whistle2= {

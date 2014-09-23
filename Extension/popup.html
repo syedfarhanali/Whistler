@@ -159,22 +159,15 @@
 {{/each}}
 </script>	
 <script id="whistleItemSmallTemplate" type="text/x-jQuery-tmpl">
+<div class="conversation_list">
 {{each(i,whistle) whistles}}
 	<div class="conversation_list_item" name="whistleDetails" whistle_id="${whistle.id}">
 		<img class="item-thumb" src="${whistle.image}">
 		<span class="item-title">${whistle.title}</span>
 		<span class="item_description">${whistle.description}</span>
-		<span class="favourite"></span>
-		<span class="item-details">
-			<div class="item-hover-details">
-				<span class="upvote"></span>
-				<span class="upvote_count">${whistle.upvote}</span>
-				<span class="downvote"></span>
-				<span class="downvote_count">${whistle.downvote}</span>
-			</div>
-		</span>
 	</div>
 {{/each}}
+</div>
 </script>			
 <script id="previewTemplate" type="text/x-jQuery-tmpl">
 	<div class="preview_main">
