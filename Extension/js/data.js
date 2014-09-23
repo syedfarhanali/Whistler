@@ -2,66 +2,111 @@ var data = {};
 var fetcher= {};
 var poster= {};
 var api = {};
-
+var isChrome = window.chrome;
 api.rootUrl="http://localhost:8080/whistler/";
 
-fetcher.getHomePageWhistles=function getHomePageWhistles(){
+fetcher.getHomePageWhistles=function getHomePageWhistles(userId,page){
+	var returnData;
 	$.ajax({
-		url :api.rootUrl + 'whistles/home/userId/page',
+		url :api.rootUrl + 'whistles/home/'+userId+'/'+page,
 		contentType : "application/json; charset=utf-8",
 		async:true,
+		type:"GET",
 		dataType : "json",
-		success : function(userRoleDTO) {}
+		success : function(whistles) {
+			returnData=whistles;
+			return returnData;
+		}
 	});	
 }
 
 fetcher.getWhistleDetails=function getWhistleDetails(){
+	var returnData;
 	$.ajax({
 		url :api.rootUrl + 'whistle/detail/whistleId',
 		contentType : "application/json; charset=utf-8",
-		async:true,
+		async:false,
+		type:"GET",
 		dataType : "json",
-		success : function(userRoleDTO) {}
+		success : function(details) {
+			returnData=details;
+			return returnData;
+		}
 	});	
 }
 
 fetcher.getFavouriteWhistles=function getFavouriteWhistles(){
+	var returnData;
 	$.ajax({
 		url :api.rootUrl + 'whistles/favourite/userId/page',
 		contentType : "application/json; charset=utf-8",
 		async:true,
+		type:"GET",
 		dataType : "json",
-		success : function(userRoleDTO) {}
+		success : function(whistles) {
+			returnData=whistles;
+			return returnData;
+		}
 	});	
 }
 
 fetcher.getTopVotedWhistles=function getTopVotedWhistles(){
+	var returnData;
 	$.ajax({
 		url :api.rootUrl + 'whistles/topVoted/userId/page',
 		contentType : "application/json; charset=utf-8",
 		async:true,
+		type:"GET",
 		dataType : "json",
-		success : function(userRoleDTO) {}
+		success : function(whistles) {
+			returnData=whistles;
+			return returnData;
+		}
+	});	
+}
+
+fetcher.getAllUserHandles=function getTopVotedWhistles(){
+	var returnData;
+	$.ajax({
+		url :api.rootUrl + 'user/handles/all',
+		contentType : "application/json; charset=utf-8",
+		async:true,
+		type:"GET",
+		dataType : "json",
+		success : function(userhandles) {
+			returnData=userhandles;
+			return returnData;
+		}
 	});	
 }
 
 poster.saveWhistle=function saveWhistle(whistle){
+	var returnData;
 	$.ajax({
 		url :api.rootUrl + 'whistle/save',
 		contentType : "application/json; charset=utf-8",
 		async:true,
 		dataType : "json",
-		success : function(userRoleDTO) {}
+		type:"POST",
+		success : function(whistle) {
+			returnData=whistle;
+			return returnData;
+		}
 	});	
 }
 
 poster.saveEvent=function saveEvent(event){
+	var returnData;
 	$.ajax({
 		url :api.rootUrl + 'event/save',
 		contentType : "application/json; charset=utf-8",
 		async:true,
 		dataType : "json",
-		success : function(userRoleDTO) {}
+		type:"POST",
+		success : function(event){
+			returnData=event;
+			return returnData;
+		}
 	});	
 }
 
@@ -76,6 +121,7 @@ $(document).ready(function(){
 			description:'We will be having all hands meeting today at 5 pm ,please be there.We will be having all hands meeting today at 5 pm ,please be there.',
 			upvote:12,
 			downvote:1};
+	
 	
 	var comment1 = {
 			text:"Where is the meeting?"
@@ -94,8 +140,25 @@ $(document).ready(function(){
 	comments.push(comment2);
 	comments.push(comment3);
 	comments.push(comment4);
+	comments.push(comment4);
+	comments.push(comment4);
+	comments.push(comment4);
+	comments.push(comment4);
+	comments.push(comment4);
+	comments.push(comment4);
 	
 	whistle1.comments=comments;
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
+	whistles.push(whistle1);
 	whistles.push(whistle1);
 	
 	var whistle2= {
@@ -112,7 +175,15 @@ $(document).ready(function(){
 	user.id=1,
 	user.firstName="Farhan Ali";
 	user.lastName="Syed"
+		
+		
+	var availableTags = [
+	                     "Gurpreet",
+	                     "Farhan",
+	                     "Suyash",
+	                   ];	
 	
+	data.tags=availableTags;
 	data.user=user;	
 	data.whistles=whistles;
 })
