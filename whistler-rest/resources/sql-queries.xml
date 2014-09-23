@@ -38,6 +38,16 @@
 						limit ?, ?
 					</value>
 				</entry>
+				
+				<entry key="FIND_FAV_WHISTLES">
+					<value>
+						select w.* from whistle w
+						join whistle_fav_join wfj ON (w.id=wfj.whistle_id)
+						where wfj.user_id=:userId
+						order by id desc
+						limit ?, ?
+					</value>
+				</entry>
 			</map>
 		</property>
 	</bean>

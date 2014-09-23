@@ -14,4 +14,6 @@ public interface WhistleBo {
 
 	Whistle update(Whistle whistle);
 
+	List<Whistle> findFavWhistles(Integer userId, Integer page);
+
 }

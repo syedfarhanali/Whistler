@@ -37,4 +37,9 @@ public class WhistleBoImpl implements WhistleBo{
 		return whistleDao.findMineWhistles(userId, page);
 	}
 
+	@Override
+	public List<Whistle> findFavWhistles(Integer userId, Integer page) {
+		return whistleDao.findFavWhistles(userId, page);
+	}
+
 }

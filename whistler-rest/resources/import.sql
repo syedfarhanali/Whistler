@@ -174,6 +174,14 @@ VALUES
 	(3,13,3);
 
 /*!40000 ALTER TABLE `whistle_user_join` ENABLE KEYS */;
+
+CREATE TABLE `whistle_fav_join` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `whistle_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
 UNLOCK TABLES;
 
 

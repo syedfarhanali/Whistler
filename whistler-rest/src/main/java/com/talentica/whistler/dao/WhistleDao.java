@@ -9,4 +9,6 @@ public interface WhistleDao extends BaseDao<Whistle>{
 	List<Whistle> findSharedWhistles(Integer userId, Integer page);
 	
 	List<Whistle> findMineWhistles(Integer userId, Integer page);
+
+	List<Whistle> findFavWhistles(Integer userId, Integer page);
 }

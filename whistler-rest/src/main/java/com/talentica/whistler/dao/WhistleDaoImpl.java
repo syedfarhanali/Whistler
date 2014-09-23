@@ -39,4 +39,14 @@ public class WhistleDaoImpl extends BaseDaoImpl<Whistle> implements WhistleDao{
 		List<Whistle> whistles = query.getResultList();
 		return whistles;
 	}
+
+	@Override
+	public List<Whistle> findFavWhistles(Integer userId, Integer page) {
+		int start = (page-1)*WConstants.WHISTLE_PAGE_SIZE;
+		javax.persistence.Query query = entityManager.createNativeQuery(
+				queryBo.getQueryString(SQLQueryIds.FIND_FAV_WHISTLES, new Object[]{start, WConstants.WHISTLE_PAGE_SIZE}))
+				.setParameter("userId", userId);
+		List<Whistle> whistles = query.getResultList();
+		return whistles;
+	}
 }
