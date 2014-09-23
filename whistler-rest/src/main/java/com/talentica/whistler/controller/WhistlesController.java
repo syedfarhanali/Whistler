@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.talentica.whistler.bean.WhistleDto;
-import com.talentica.whistler.bo.WhistleBo;
+import com.talentica.whistler.bo.WhistleFinderBo;
 import com.talentica.whistler.common.Util;
 import com.talentica.whistler.common.WConstants;
 import com.talentica.whistler.entity.RestResponse;
@@ -26,7 +26,7 @@ import com.talentica.whistler.entity.Whistle;
 public class WhistlesController {
 
 	@Autowired
-	private WhistleBo whistleBo;
+	private WhistleFinderBo whistleBo;
 	
 	@RequestMapping(value = "save", method = RequestMethod.POST)
 	public @ResponseBody RestResponse postWhistle(@RequestBody Whistle whistle) throws JsonGenerationException, JsonMappingException, IOException{
@@ -69,6 +69,18 @@ public class WhistlesController {
 	@RequestMapping(value = "fav/{userId}/{page}", method = RequestMethod.GET)
 	public @ResponseBody RestResponse findFavWhistles(@PathVariable("userId") Integer userId, @PathVariable("page") Integer page){
 		List<WhistleDto> whistles = whistleBo.findFavWhistles(userId, page);
+		RestResponse response = null;
+		if(Util.notNullAndEmpty(whistles)){
+			response = new RestResponse(WConstants.SUCCESS, null, whistles); 
+		}else{
+			response = new RestResponse(WConstants.FAILURE, "No Whistles Found!!!", null);
+		}
+		return response;
+	}
+	
+	@RequestMapping(value = "clan/{clanId}/{page}", method = RequestMethod.GET)
+	public @ResponseBody RestResponse findClanWhistles(@PathVariable("clanId") Integer clanId, @PathVariable("page") Integer page){
+		List<WhistleDto> whistles = whistleBo.findClanWhistles(clanId, page);
 		RestResponse response = null;
 		if(Util.notNullAndEmpty(whistles)){
 			response = new RestResponse(WConstants.SUCCESS, null, whistles); 

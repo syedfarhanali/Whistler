@@ -48,6 +48,16 @@
 						limit ?, ?
 					</value>
 				</entry>
+				
+				<entry key="FIND_CLAN_WHISTLES">
+					<value>
+						select w.* from whistle w
+						join whistle_clan_join wcj ON (w.id=wcj.whistle_id)
+						where wcj.clan_id=:clanId
+						order by id desc
+						limit ?, ?
+					</value>
+				</entry>
 			</map>
 		</property>
 	</bean>

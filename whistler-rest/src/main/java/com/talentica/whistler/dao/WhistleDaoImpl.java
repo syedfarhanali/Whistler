@@ -49,4 +49,13 @@ public class WhistleDaoImpl extends BaseDaoImpl<Whistle> implements WhistleDao{
 				.setParameter("userId", userId);
 		return Util.getWhistlesFromList(query.getResultList());
 	}
+
+	@Override
+	public List<WhistleDto> findClanWhistles(Integer clanId, Integer page) {
+		int start = (page-1)*WConstants.WHISTLE_PAGE_SIZE;
+		javax.persistence.Query query = entityManager.createNativeQuery(
+				queryBo.getQueryString(SQLQueryIds.FIND_CLAN_WHISTLES, new Object[]{start, WConstants.WHISTLE_PAGE_SIZE}))
+				.setParameter("clanId", clanId);
+		return Util.getWhistlesFromList(query.getResultList());
+	}
 }

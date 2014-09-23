@@ -28,7 +28,6 @@ public class WhistleDto {
 	private Date lastModified;
 	
 	public WhistleDto(Object[] obj) {
-		System.out.println((Integer)obj[0]);
 		this.id=(Integer)obj[0];
 		this.title=(String )obj[1];
 		this.description=(String)obj[2];

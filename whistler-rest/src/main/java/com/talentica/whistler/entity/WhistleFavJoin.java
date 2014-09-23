@@ -10,9 +10,9 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter
-public class WhistleUserJoin {
+public class WhistleFavJoin {
 	
-	public WhistleUserJoin(int whistleId, int userId){
+	public WhistleFavJoin(int whistleId, int userId){
 		this.whistleId = whistleId;
 		this.userId = userId;
 	}
@@ -24,5 +24,4 @@ public class WhistleUserJoin {
 	private int whistleId;
 	
 	private int userId;
-	
 }
