@@ -7,13 +7,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.talentica.whistler.dao.WhistleDao;
+import com.talentica.whistler.dao.WhistleFavJoinDao;
 import com.talentica.whistler.entity.Whistle;
 
 @Service
-public class WhistleBoImpl implements WhistleBo{
+public class WhistleFinderBoImpl implements WhistleFinderBo{
 
 	@Autowired
 	private WhistleDao whistleDao;
+	@Autowired
+	private WhistleFavJoinDao whistleFavJoinDao;
 	
 	@Override
 	public void save(Whistle whistle){
@@ -38,8 +41,15 @@ public class WhistleBoImpl implements WhistleBo{
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public List<Whistle> findFavWhistles(Integer userId, Integer page) {
 		return whistleDao.findFavWhistles(userId, page);
 	}
-
+	
+	@Override
+	@Transactional(readOnly=true)
+	public List<Whistle> findClanWhistles(Integer clanId, Integer page) {
+		return whistleDao.findClanWhistles(clanId, page);
+	}
+	
 }

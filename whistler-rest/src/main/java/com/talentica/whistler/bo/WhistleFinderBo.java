@@ -3,8 +3,9 @@ package com.talentica.whistler.bo;
 import java.util.List;
 
 import com.talentica.whistler.entity.Whistle;
+import com.talentica.whistler.entity.WhistleFavJoin;
 
-public interface WhistleBo {
+public interface WhistleFinderBo {
 
 	List<Whistle> findSharedWhistles(Integer userId, Integer page);
 	
@@ -15,5 +16,7 @@ public interface WhistleBo {
 	Whistle update(Whistle whistle);
 
 	List<Whistle> findFavWhistles(Integer userId, Integer page);
+
+	List<Whistle> findClanWhistles(Integer userId, Integer page);
 
 }
