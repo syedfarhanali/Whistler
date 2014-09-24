@@ -12,6 +12,8 @@ import lombok.Setter;
 @Getter @Setter
 public class WhistleFavJoin {
 	
+	public WhistleFavJoin(){}
+	
 	public WhistleFavJoin(int whistleId, int userId){
 		this.whistleId = whistleId;
 		this.userId = userId;
