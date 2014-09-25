@@ -157,7 +157,8 @@ body {
     position: absolute;
 }
 .list_item .item-details{
-	margin:1px 50px;
+	margin: 1px 50px;
+	position: absolute;
 }
 .list_item.active{
 	background: #f1c40f;
@@ -179,45 +180,47 @@ img.new_post {
 }
 
 .item-hover-details{
-	margin:0% 88%;
-	width:110px;
-    position: absolute;
+	margin: 2% 1%;
+	width: 110px;
+	position: absolute;
 }
 .upvote{
-	background: url(../images/master_sprite.png) 196px -134px;
-	width:15px;
-	height:13px;
-	position:absolute;
-	margin:-6px 14px;
+	background: url(../images/master_sprite.png) 196px -132px;
+	width: 15px;
+	height: 13px;
+	position: absolute;
+	margin: -13px 14px;
 }
 .upvote_count{
 	margin-left:13px;
 }
 .downvote{
-	background: url(../images/master_sprite.png) 172px -131px;
-	width:15px;
-	height:13px;
-	position:absolute;
-	margin:7px 1px;
+	background: url(../images/master_sprite.png) 171px -131px;
+	width: 15px;
+	height: 13px;
+	position: absolute;
+	margin: 16px -14px;
 }
 .downvote_count{
 	margin-left:20px
 }
 .favourite{
-	background: url(../images/master_sprite.png) 338px -11px;
-	width: 14px;
+	background: url(../images/master_sprite.png) 339px -12px;
+	width: 15px;
 	height: 14px;
-	position:absolute;
-	margin:2% 83%;
-	display:none;
+	position: absolute;
+	padding: 0% 0%;
+	margin: 14px 1px;
+	display: none;
 }
 .favourite_sel{
 	background: url(../images/master_sprite.png) 362px -11px;
-	width: 14px;
+	width: 15px;
 	height: 14px;
 	position: absolute;
-	margin: 23px 524px;
-	display:none;
+	padding: 0% 0%;
+	margin: 14px 1px;
+	display: none;
 }
 .list_item:hover > .favourite,.list_item:hover > .favourite_sel{
 	display:block;
@@ -286,7 +289,7 @@ img.new_post {
 	margin:1% 70%;
 	position: absolute;
 	color: #0084b4;
-	curson:pointer;
+	cursor:pointer;
 }
 .custom_tag{
 	margin_bottom:5px;

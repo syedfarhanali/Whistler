@@ -140,18 +140,17 @@
 <script id="whistleItemTemplate" type="text/x-jQuery-tmpl">
 {{each(i,whistle) whistles}}
 	{{if i<=10}}
-		<div class="list_item" name="whistleDetails" whistle_id="${whistle.id}">
-			<img class="item-thumb" src="${whistle.image}">
-			<span class="item-title">${whistle.title}</span>
-			<span class="item_description">${whistle.description}</span>
+		<div class="list_item">
 			<span class="favourite"></span>
-			<span class="item-details">
-				<div class="item-hover-details">
-					<span class="upvote"></span>
-					<span class="upvote_count">${whistle.upvote}</span>
-					<span class="downvote"></span>
-					<span class="downvote_count">${whistle.downvote}</span>
-				</div>
+			<div class="item-hover-details">
+				<span class="upvote"></span>
+				<span class="upvote_count">12</span>
+				<span class="downvote"></span>
+			</div>
+			<span class="item-details" whistle_id="${whistle.id}" name="whistleDetails">
+				<img class="item-thumb" src="${whistle.image}">
+				<span class="item-title">${whistle.title}</span>
+				<span class="item_description">${whistle.description}</span>
 			</span>
 		</div>
 	{{/if}}

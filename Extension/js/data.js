@@ -136,7 +136,7 @@ poster.saveWhistle=function saveWhistle(whistle){
 			if(whistle.status=="FAILURE"){
 				alert("Whistle could not be posted, please try again later.");
 			}else{
-				alert("Whistle posted successfully.");
+				//alert("Whistle posted successfully.");
 				$("#close_slider").click();
 				returnData = processAjaxResponse(whistles);
 				return returnData;
