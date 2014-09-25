@@ -12,11 +12,6 @@ import lombok.Setter;
 @Getter @Setter
 public class WhistleFavJoin {
 	
-	public WhistleFavJoin(int whistleId, int userId){
-		this.whistleId = whistleId;
-		this.userId = userId;
-	}
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -24,4 +19,14 @@ public class WhistleFavJoin {
 	private int whistleId;
 	
 	private int userId;
+	
+	public WhistleFavJoin() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public WhistleFavJoin(int whistleId, int userId){
+		this.whistleId = whistleId;
+		this.userId = userId;
+	}
 }

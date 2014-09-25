@@ -19,4 +19,16 @@ public class WhistleGroupJoin {
 	private int whistleId;
 	
 	private int groupId;
+
+	public WhistleGroupJoin() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public WhistleGroupJoin(int whistleId, int groupId) {
+		super();
+		this.whistleId = whistleId;
+		this.groupId = groupId;
+	}
+	
 }

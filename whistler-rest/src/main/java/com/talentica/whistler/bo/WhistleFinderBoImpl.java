@@ -6,10 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.talentica.whistler.bean.SaveWhistleDto;
 import com.talentica.whistler.bean.WhistleDto;
+import com.talentica.whistler.common.Util;
+import com.talentica.whistler.dao.WhistleClanJoinDao;
 import com.talentica.whistler.dao.WhistleDao;
 import com.talentica.whistler.dao.WhistleFavJoinDao;
+import com.talentica.whistler.dao.WhistleUserJoinDao;
 import com.talentica.whistler.entity.Whistle;
+import com.talentica.whistler.entity.WhistleGroupJoin;
+import com.talentica.whistler.entity.WhistleUserJoin;
 
 @Service
 public class WhistleFinderBoImpl implements WhistleFinderBo{
@@ -18,6 +24,10 @@ public class WhistleFinderBoImpl implements WhistleFinderBo{
 	private WhistleDao whistleDao;
 	@Autowired
 	private WhistleFavJoinDao whistleFavJoinDao;
+	@Autowired
+	private WhistleUserJoinDao whistleUserJoinDao;
+	@Autowired
+	private WhistleClanJoinDao whistleClanJoinDao;
 	
 	@Override
 	public void save(Whistle whistle){
@@ -25,8 +35,21 @@ public class WhistleFinderBoImpl implements WhistleFinderBo{
 	}
 	
 	@Override
-	public Whistle update(Whistle whistle){
-		return whistleDao.update(whistle);
+	public Whistle update(SaveWhistleDto whistleDto){
+		Whistle whistle = new Whistle(whistleDto);
+		whistle =  whistleDao.update(whistle);
+		
+		WhistleUserJoin wuj = new WhistleUserJoin(whistle.getId().intValue(),whistleDto.getUserId());
+		whistleUserJoinDao.update(wuj);
+		
+		if(!Util.nullOrEmpty(whistleDto.getClanIds())){
+			for(Integer clanId : whistleDto.getClanIds()){
+				WhistleGroupJoin wgj = new WhistleGroupJoin(whistle.getId().intValue(),clanId);
+				whistleClanJoinDao.update(wgj);
+			}
+		}
+		
+		return whistle;
 	}
 	
 	@Override

@@ -2,9 +2,9 @@ package com.talentica.whistler.bo;
 
 import java.util.List;
 
+import com.talentica.whistler.bean.SaveWhistleDto;
 import com.talentica.whistler.bean.WhistleDto;
 import com.talentica.whistler.entity.Whistle;
-import com.talentica.whistler.entity.WhistleFavJoin;
 
 public interface WhistleFinderBo {
 
@@ -14,7 +14,7 @@ public interface WhistleFinderBo {
 
 	void save(Whistle whistle);
 
-	Whistle update(Whistle whistle);
+	Whistle update(SaveWhistleDto whistle);
 
 	List<WhistleDto> findFavWhistles(Integer userId, Integer page);
 

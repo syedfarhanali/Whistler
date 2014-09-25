@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.talentica.whistler.bean.SaveWhistleDto;
 import com.talentica.whistler.bean.WhistleDto;
 import com.talentica.whistler.bo.WhistleFinderBo;
 import com.talentica.whistler.common.Util;
@@ -29,9 +30,9 @@ public class WhistlesController {
 	private WhistleFinderBo whistleBo;
 	
 	@RequestMapping(value = "save", method = RequestMethod.POST)
-	public @ResponseBody RestResponse postWhistle(@RequestBody Whistle whistle) throws JsonGenerationException, JsonMappingException, IOException{
+	public @ResponseBody RestResponse postWhistle(@RequestBody SaveWhistleDto whistleDto) throws JsonGenerationException, JsonMappingException, IOException{
 		RestResponse response = null;
-		whistle = whistleBo.update(whistle);
+		Whistle whistle = whistleBo.update(whistleDto);
 		if(null!=whistle){
 			response = new RestResponse(WConstants.SUCCESS, null, whistle);
 		}else{

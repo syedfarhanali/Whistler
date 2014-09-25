@@ -51,6 +51,7 @@
 <script id="myWhistleTemplate" type="text/x-jQuery-tmpl">
 	<div id="slide_left_header" class="slide_left_header">
 		<div class="slide_close_header slider_close_left" name="toggle_slider_left"></div>
+		<div class="my_whistle_header"> My Whistles </div>
 	</div>	
 	<div class="divider"></div>
 
@@ -79,18 +80,13 @@
 </div>
 <div class="divider"></div>
 <div id="slide_bottom" class="slide_bottom">
-	<div class="tag_container tagging_button">
-		<span class="tag_name">#All</span>
-		<span name="tag_image" class="whistle_tag"></span>
-	</div>
-	<div class="tag_container tagging_button" style="margin-left:100px">
-		<span class="tag_name">#Team</span>
-		<span name="tag_image" class="whistle_tag"></span>
-	</div>
-	<div class="tag_container tagging_button" style="margin-left:200px">
-		<span class="tag_name">#Me</span>
-		<span name="tag_image" class="whistle_tag"></span>
-	</div>
+	{{each(i,clan) topClans}}
+		<div class="tag_container tagging_button" style="margin-left:${i*100}px">
+			<span class="tag_name" clanId="${clan.id}">${clan.name}</span>
+			<span name="tag_image" class="whistle_tag"></span>
+		</div>
+	{{/each}}
+	
 	<span id="createNewWhistle" class="new_whistle">Send</span>
 </div>
 </div>

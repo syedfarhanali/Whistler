@@ -58,6 +58,18 @@
 						limit ?, ?
 					</value>
 				</entry>
+				
+				<entry key="FIND_MY_CLANS">
+					<value>
+						select c.* 
+						from clan c
+							join user_clan_join ucj ON (ucj.clan_id=c.id)
+							join user u ON (u.id=ucj.user_id)
+						WHERE u.id=?;
+					</value>
+				</entry>
+				
+				
 			</map>
 		</property>
 	</bean>

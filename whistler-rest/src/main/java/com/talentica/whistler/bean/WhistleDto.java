@@ -37,4 +37,8 @@ public class WhistleDto {
 		this.lastModified=(Date)obj[6];
 	}
 
+	public WhistleDto() {
+		super();
+	}
+
 }

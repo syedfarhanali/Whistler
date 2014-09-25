@@ -6,8 +6,18 @@ var config = {};
 var isChrome = window.chrome;
 api.rootUrl="http://localhost:8080/";
 
+
 config.CURRENT_USER_ID=1;
 config.WHISTLE_LIST_SIZE=11;
+
+
+config.showLoadingNew = function showLoadingNew(){
+	$(".new_whistle_loading").show();
+}
+config.hideLoadingNew = function hideLoadingNew(){
+	$(".new_whistle_loading").hide();
+}
+
 
 function processAjaxResponse(response){
 	if(response.status=="SUCCESS"){
@@ -32,6 +42,22 @@ fetcher.getHomePageWhistles=function getHomePageWhistles(userId,page){
 	return returnData;
 }
 
+fetcher.getMyWhistles=function getMyWhistles(userId,page){
+	var returnData;
+	$.ajax({
+		url :api.rootUrl +'whistle/mine/'+userId+'/'+page,
+		contentType : "application/json; charset=utf-8",
+		async:false,
+		type:"GET",
+		dataType : "json",
+		success : function(whistles) {
+			returnData = processAjaxResponse(whistles);
+			return returnData;
+		}
+	});	
+	return returnData;
+}
+
 fetcher.getWhistleDetails=function getWhistleDetails(){
 	var returnData;
 	$.ajax({
@@ -41,10 +67,11 @@ fetcher.getWhistleDetails=function getWhistleDetails(){
 		type:"GET",
 		dataType : "json",
 		success : function(details) {
-			returnData=details;
+			returnData = processAjaxResponse(details);
 			return returnData;
 		}
 	});	
+	return returnData;
 }
 
 fetcher.getFavouriteWhistles=function getFavouriteWhistles(){
@@ -56,10 +83,11 @@ fetcher.getFavouriteWhistles=function getFavouriteWhistles(){
 		type:"GET",
 		dataType : "json",
 		success : function(whistles) {
-			returnData=whistles;
+			returnData = processAjaxResponse(whistles);
 			return returnData;
 		}
 	});	
+	return returnData;
 }
 
 fetcher.getTopVotedWhistles=function getTopVotedWhistles(){
@@ -71,25 +99,27 @@ fetcher.getTopVotedWhistles=function getTopVotedWhistles(){
 		type:"GET",
 		dataType : "json",
 		success : function(whistles) {
-			returnData=whistles;
+			returnData = processAjaxResponse(whistles);
 			return returnData;
 		}
 	});	
+	return returnData;
 }
 
-fetcher.getAllUserHandles=function getTopVotedWhistles(){
+fetcher.getMyClans=function getMyClans(userId){
 	var returnData;
 	$.ajax({
-		url :api.rootUrl + 'user/handles/all',
+		url :api.rootUrl + 'clan/my/'+userId,
 		contentType : "application/json; charset=utf-8",
-		async:true,
+		async:false,
 		type:"GET",
 		dataType : "json",
-		success : function(userhandles) {
-			returnData=userhandles;
+		success : function(myclans) {
+			returnData = processAjaxResponse(myclans);
 			return returnData;
 		}
 	});	
+	return returnData;
 }
 
 poster.saveWhistle=function saveWhistle(whistle){
@@ -100,11 +130,20 @@ poster.saveWhistle=function saveWhistle(whistle){
 		async:true,
 		dataType : "json",
 		type:"POST",
+		data:JSON.stringify(whistle),
 		success : function(whistle) {
-			returnData=whistle;
-			return returnData;
+			config.hideLoadingNew();
+			if(whistle.status=="FAILURE"){
+				alert("Whistle could not be posted, please try again later.");
+			}else{
+				alert("Whistle posted successfully.");
+				$("#close_slider").click();
+				returnData = processAjaxResponse(whistles);
+				return returnData;
+			}
 		}
-	});	
+	});
+	return returnData;
 }
 
 poster.saveEvent=function saveEvent(event){
@@ -116,10 +155,11 @@ poster.saveEvent=function saveEvent(event){
 		dataType : "json",
 		type:"POST",
 		success : function(event){
-			returnData=event;
+			returnData = processAjaxResponse(event);
 			return returnData;
 		}
 	});	
+	return returnData;
 }
 
 
@@ -198,4 +238,6 @@ $(document).ready(function(){
 	data.tags=availableTags;
 	data.user=user;	
 	data.whistles=whistles;
+	
+	config.CURRENT_USER=user;
 })

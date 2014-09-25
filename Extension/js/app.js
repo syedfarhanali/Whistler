@@ -10,7 +10,6 @@ $(document).ready(function(){
 	}
 	
 	function bindViewMore(){
-		
 		$("#homeViewmore").unbind('click').click(function(){
 			var currentPage= parseInt($(this).attr('page'));
 			var nextPage=currentPage+1;
@@ -18,6 +17,7 @@ $(document).ready(function(){
 			loadWhistles(config.CURRENT_USER_ID,nextPage);
 		});
 	}
+	
 	function updatedWhistleNotification(available,count){
 		if(isChrome) {
 			if(available){
@@ -30,7 +30,7 @@ $(document).ready(function(){
 		}
 	}
 	
-	function bindNewPostEvent(){
+	function bindNewPostEvent(suggestedClans){
 		$('#linkUrl').on('input propertychange', function () {
 			var el=$("#linkPreview");
 			 $('#linkUrl').urlive({
@@ -51,16 +51,11 @@ $(document).ready(function(){
 						$('.urlive-container').urlive('remove');
 					},
 					noData: function () {
-						console.log("nodata");
 						$('.new_whistle_loading').hide();
 					}
 				}
 			})
 		});
-		
-		
-		
-		
 		
 		$(function() {
 		    function split( val ) {
@@ -82,14 +77,14 @@ $(document).ready(function(){
 		        source: function( request, response ) {
 		          // delegate back to autocomplete, but extract the last term
 		          response( $.ui.autocomplete.filter(
-		            data.tags, extractLast( request.term ) ) );
+		        		  suggestedClans, extractLast( request.term ) ) );
 		        },
 		        focus: function() {
 		          // prevent value inserted on focus
 		          return false;
 		        },
 		        select: function( event, ui ) {
-		        	console.log("4");
+		        	console.log(ui);
 		          var terms = split( this.value );
 		          // remove the current input
 		          terms.pop();
@@ -105,22 +100,27 @@ $(document).ready(function(){
 		
 		
 		$("#createNewWhistle").unbind('click').click(function(){
+			config.showLoadingNew();
 			var whistle={};
-			whistle.Url =$("#linkUrl").val();
+			whistle.userId=config.CURRENT_USER_ID;
+			whistle.url =$("#linkUrl").val();
 			whistle.image = $(".preview_image").children('img').attr('src');
 			whistle.title=$(".preview_title").html();
 			whistle.description = $(".preview_description").html();
 			whistle.comment= $(".new_whistle_comment").children('textarea').val();
 			
 			var clans = [];
+			var customClans=$("#newCustomTags").val();
+			if(customClans & customClans.length>0){
+				clans=customClans.split(",");
+			}
+			
 			$("[name=tag_image].whistle_tag_active").each(function(){
-				console.log("called");
-				var clan =  $(this).parent().children(".tag_name").html();
+				var clan =  $(this).parent().children(".tag_name").attr("clanId");
 				clans.push(clan);
 			});
-			whistle.clans=clans;
-			//poster.saveWhistle(whistle);
-			console.log(whistle);
+			whistle.clanIds=clans;
+			poster.saveWhistle(whistle);
 		});
 		
 	}
@@ -133,9 +133,12 @@ $(document).ready(function(){
 	
 	
 	$("#new_post").unbind('click').click(function(){
+		var clans = fetcher.getMyClans(config.CURRENT_USER_ID);
+		var topClans = clans.slice(0,3);
+		var suggestedClans = topClans;//clans.slice(2,clans.length);
 		var el=$("#slide_container")
 		el.empty();
-		$.tmpl($("#newWhistleTemplate"),{'user':data.user}).appendTo(el);
+		$.tmpl($("#newWhistleTemplate"),{'user':config.CURRENT_USER,'topClans':topClans}).appendTo(el);
 		
 		if(!el.hasClass('open')){
 			el.addClass('open');
@@ -150,15 +153,16 @@ $(document).ready(function(){
 				$(".whistle_link").children('textarea').html(curUrl);
 				$(".whistle_link").children('textarea').trigger('propertychange');
 			});
-			bindNewPostEvent();
+			bindNewPostEvent(suggestedClans);
 		}
 	});
 	
 	$("[name=toggle_slider_left]").unbind('click').click(function(){
 		var el=$("#slide_container_left");
 		el.empty();
-		$.tmpl($("#myWhistleTemplate"),{'user':data.user}).appendTo(el);
-		$.tmpl($("#whistleItemSmallTemplate"),{'whistles':data.whistles}).appendTo(el);
+		var whistles = fetcher.getMyWhistles(config.CURRENT_USER_ID,1);
+		$.tmpl($("#myWhistleTemplate"),{'user':config.CURRENT_USER}).appendTo(el);
+		$.tmpl($("#whistleItemSmallTemplate"),{'whistles':whistles}).appendTo(el);
 		
 		if(!el.hasClass('open')){
 			el.addClass('open');

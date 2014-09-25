@@ -39,7 +39,7 @@ body {
 	width: 25px;
 	height: 18px;
 	background: url(../images/master_sprite.png) -315px -9px;
-	margin:23px 209px;
+	margin:20px 208px;
 }
 
 .main_header{
@@ -68,7 +68,7 @@ body {
 	cursor: pointer;
 }
 .fav_whistle_selector img{
-	background: url(../images/master_sprite_blue.png) 370px -3px;
+	background: url(../images/master_sprite_blue.png) 419px -50px;
 	margin: -8px -3px;
 	border: none;
 	width: 30px;
@@ -184,19 +184,21 @@ img.new_post {
     position: absolute;
 }
 .upvote{
-	background: url(../images/master_sprite.png) 388px -155px;
+	background: url(../images/master_sprite.png) 196px -134px;
 	width:15px;
 	height:13px;
 	position:absolute;
+	margin:-6px 14px;
 }
 .upvote_count{
 	margin-left:13px;
 }
 .downvote{
-	background: url(../images/master_sprite.png) 367px -156px;
-	width:18px;
+	background: url(../images/master_sprite.png) 172px -131px;
+	width:15px;
 	height:13px;
 	position:absolute;
+	margin:7px 1px;
 }
 .downvote_count{
 	margin-left:20px
@@ -284,6 +286,7 @@ img.new_post {
 	margin:1% 70%;
 	position: absolute;
 	color: #0084b4;
+	curson:pointer;
 }
 .custom_tag{
 	margin_bottom:5px;
@@ -503,4 +506,11 @@ img.new_post {
 
 .home_viewmore{
 	margin-left:45%;
+}
+
+.my_whistle_header{
+	margin: 21px 80px;
+	position: absolute;
+	font-weight: bold;
+	font-family: Georgia;
 }
