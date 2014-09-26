@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.talentica.whistler.bean.ClanDto;
 import com.talentica.whistler.bean.WhistleDto;
-import com.talentica.whistler.entity.Clan;
 
 @Component
 public class Util {
@@ -52,10 +52,10 @@ public class Util {
 		return whistles;
 	}
 	
-	public static List<Clan> getClansFromList(List<Object[]> list){
-		List<Clan> clans = new ArrayList<Clan>();
+	public static List<ClanDto> getClansFromList(List<Object[]> list){
+		List<ClanDto> clans = new ArrayList<ClanDto>();
 		for(Object[] obj : list){
-			Clan dto = new Clan(obj);
+			ClanDto dto = new ClanDto(obj);
 			clans.add(dto);
 		}
 		return clans;

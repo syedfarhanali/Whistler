@@ -58,45 +58,35 @@ $(document).ready(function(){
 		});
 		
 		$(function() {
-		    function split( val ) {
-		      return val.split( /,\s*/ );
-		    }
-		    function extractLast( term ) {
-		      return split( term ).pop();
-		    }
+			function split( val ) {
+				return val.split( /,\s*/ );
+			}
+			function extractLast( term ) {
+				return split( term ).pop();
+			}
 		 
-		    // don't navigate away from the field on tab when selecting an item
-		    $("#newCustomTags").bind( "keydown", function( event ) {
-		        if ( event.keyCode === $.ui.keyCode.TAB &&
-		            $( this ).autocomplete( "instance" ).menu.active ) {
-		          event.preventDefault();
-		        }
-		      })
-		      .autocomplete({
-		        minLength: 0,
-		        source: function( request, response ) {
-		          // delegate back to autocomplete, but extract the last term
-		          response( $.ui.autocomplete.filter(
-		        		  suggestedClans, extractLast( request.term ) ) );
-		        },
-		        focus: function() {
-		          // prevent value inserted on focus
-		          return false;
-		        },
-		        select: function( event, ui ) {
-		        	console.log(ui);
-		          var terms = split( this.value );
-		          // remove the current input
-		          terms.pop();
-		          // add the selected item
-		          terms.push( ui.item.value );
-		          // add placeholder to get the comma-and-space at the end
-		          terms.push( "" );
-		          this.value = terms.join( ", " );
-		          return false;
-		        }
-		      });
-		  });
+			$("#newCustomTags").bind( "keydown", function( event ) {
+					if ( event.keyCode === $.ui.keyCode.TAB &&
+						$( this ).autocomplete( "instance" ).menu.active ) {
+						event.preventDefault();
+					}
+				}).autocomplete({
+					minLength: 0,
+					source: function( request, response ) {
+						response( $.ui.autocomplete.filter(
+							suggestedClans, extractLast( request.term ) ) );
+					},
+					focus: function() {
+						return false;
+					},
+					select: function( event, ui ) {
+						$("#newCustomTags").val(ui.item.label);
+						console.log(ui.item.value);
+						
+						return false;
+					}
+				});
+			});
 		
 		
 		$("#createNewWhistle").unbind('click').click(function(){
@@ -116,7 +106,7 @@ $(document).ready(function(){
 			}
 			
 			$("[name=tag_image].whistle_tag_active").each(function(){
-				var clan =  $(this).parent().children(".tag_name").attr("clanId");
+				var clan =	$(this).parent().children(".tag_name").attr("clanId");
 				clans.push(clan);
 			});
 			whistle.clanIds=clans;
@@ -189,7 +179,7 @@ $(document).ready(function(){
 			el.toggle(effect, options, duration);
 		}
 	});
-	  
+		
 	
 	$(document).on('click',"#close_slider",function(){
 		var el=$("#slide_container");

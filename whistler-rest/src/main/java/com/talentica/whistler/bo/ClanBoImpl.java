@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.talentica.whistler.bean.ClanDto;
 import com.talentica.whistler.dao.ClanDao;
 import com.talentica.whistler.entity.Clan;
 
@@ -22,7 +23,7 @@ public class ClanBoImpl implements ClanBo{
 	
 	@Override
 	@Transactional(readOnly=true)
-	public List<Clan> findMyClans(Integer userId) {
+	public List<ClanDto> findMyClans(Integer userId) {
 		return clanDao.findMyClans(userId);
 	}
 

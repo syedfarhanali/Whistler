@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.talentica.whistler.bean.ClanDto;
 import com.talentica.whistler.bo.ClanBo;
 import com.talentica.whistler.common.Util;
 import com.talentica.whistler.common.WConstants;
-import com.talentica.whistler.entity.Clan;
 import com.talentica.whistler.entity.RestResponse;
 
 @RestController
@@ -34,7 +34,7 @@ public class ClanController {
 	
 	@RequestMapping(value = "my/{userId}", method = RequestMethod.GET)
 	public @ResponseBody RestResponse findMyClans(@PathVariable("userId") Integer userId){
-		List<Clan> clans = clanBo.findMyClans(userId);
+		List<ClanDto> clans = clanBo.findMyClans(userId);
 		RestResponse response = null;
 		if(Util.notNullAndEmpty(clans)){
 			response = new RestResponse(WConstants.SUCCESS, null, clans); 

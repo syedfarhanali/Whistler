@@ -18,7 +18,6 @@ config.hideLoadingNew = function hideLoadingNew(){
 	$(".new_whistle_loading").hide();
 }
 
-
 function processAjaxResponse(response){
 	if(response.status=="SUCCESS"){
 		return response.body;
@@ -48,54 +47,6 @@ fetcher.getMyWhistles=function getMyWhistles(userId,page){
 		url :api.rootUrl +'whistle/mine/'+userId+'/'+page,
 		contentType : "application/json; charset=utf-8",
 		async:false,
-		type:"GET",
-		dataType : "json",
-		success : function(whistles) {
-			returnData = processAjaxResponse(whistles);
-			return returnData;
-		}
-	});	
-	return returnData;
-}
-
-fetcher.getWhistleDetails=function getWhistleDetails(){
-	var returnData;
-	$.ajax({
-		url :api.rootUrl + 'whistle/detail/whistleId',
-		contentType : "application/json; charset=utf-8",
-		async:false,
-		type:"GET",
-		dataType : "json",
-		success : function(details) {
-			returnData = processAjaxResponse(details);
-			return returnData;
-		}
-	});	
-	return returnData;
-}
-
-fetcher.getFavouriteWhistles=function getFavouriteWhistles(){
-	var returnData;
-	$.ajax({
-		url :api.rootUrl + 'whistles/favourite/userId/page',
-		contentType : "application/json; charset=utf-8",
-		async:true,
-		type:"GET",
-		dataType : "json",
-		success : function(whistles) {
-			returnData = processAjaxResponse(whistles);
-			return returnData;
-		}
-	});	
-	return returnData;
-}
-
-fetcher.getTopVotedWhistles=function getTopVotedWhistles(){
-	var returnData;
-	$.ajax({
-		url :api.rootUrl + 'whistles/topVoted/userId/page',
-		contentType : "application/json; charset=utf-8",
-		async:true,
 		type:"GET",
 		dataType : "json",
 		success : function(whistles) {
@@ -146,6 +97,56 @@ poster.saveWhistle=function saveWhistle(whistle){
 	return returnData;
 }
 
+/********************NOT USED*******************************/
+
+fetcher.getWhistleDetails=function getWhistleDetails(){
+	var returnData;
+	$.ajax({
+		url :api.rootUrl + 'whistle/detail/whistleId',
+		contentType : "application/json; charset=utf-8",
+		async:false,
+		type:"GET",
+		dataType : "json",
+		success : function(details) {
+			returnData = processAjaxResponse(details);
+			return returnData;
+		}
+	});	
+	return returnData;
+}
+
+fetcher.getFavouriteWhistles=function getFavouriteWhistles(){
+	var returnData;
+	$.ajax({
+		url :api.rootUrl + 'whistles/favourite/userId/page',
+		contentType : "application/json; charset=utf-8",
+		async:true,
+		type:"GET",
+		dataType : "json",
+		success : function(whistles) {
+			returnData = processAjaxResponse(whistles);
+			return returnData;
+		}
+	});	
+	return returnData;
+}
+
+fetcher.getTopVotedWhistles=function getTopVotedWhistles(){
+	var returnData;
+	$.ajax({
+		url :api.rootUrl + 'whistles/topVoted/userId/page',
+		contentType : "application/json; charset=utf-8",
+		async:true,
+		type:"GET",
+		dataType : "json",
+		success : function(whistles) {
+			returnData = processAjaxResponse(whistles);
+			return returnData;
+		}
+	});	
+	return returnData;
+}
+
 poster.saveEvent=function saveEvent(event){
 	var returnData;
 	$.ajax({
@@ -161,8 +162,6 @@ poster.saveEvent=function saveEvent(event){
 	});	
 	return returnData;
 }
-
-
 
 $(document).ready(function(){
 	var whistles = new Array();
